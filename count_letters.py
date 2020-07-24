@@ -16,6 +16,8 @@ def countLetters(file):
 
 
 fileHandle = open('/tmp/wget.rb')
-x = countLetters(fileHandle)
-print(x)
+letterFrequency = countLetters(fileHandle)
+
+for i in letterFrequency:
+    print(f'{i[0]} => {i[1]}')
 
