@@ -12,6 +12,7 @@ def readInfo(file):
         else:
             info = line.split(',')
             for i in info:
+                i = i.strip()
                 list1.append(i)
 
             x = list1[-1].replace('\n', '')
