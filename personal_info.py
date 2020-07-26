@@ -15,9 +15,6 @@ def readInfo(file):
                 i = i.strip()
                 list1.append(i)
 
-            x = list1[-1].replace('\n', '')
-            list1.pop(-1)
-            list1.append(x)
             info = tuple(list1)
             tupleList.append(info)
             list1.clear()
