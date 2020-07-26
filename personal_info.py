@@ -4,8 +4,6 @@
 def readInfo(file):
     list1 = []
     tupleList = []
-    secondTupleList = []
-    finalList = []
     for line in file:
         if line.startswith('name,'):
             pass
@@ -19,14 +17,7 @@ def readInfo(file):
             tupleList.append(info)
             list1.clear()
 
-    for name, email, phone, zipCode in tupleList:
-        secondTupleList.append((zipCode, name, email, phone))
-
-    secondTupleList.sort()
-
-    for zipCode, name, email, phone in secondTupleList:
-        finalList.append((name, email, phone, zipCode))
-
+    finalList = sorted(tupleList, key=lambda x: x[-1])
     return finalList
 
 
