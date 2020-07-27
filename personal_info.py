@@ -24,12 +24,18 @@ def readInfo(file):
 fileHandle = open('/Users/clara/Downloads/dataJul-26-2020.csv')
 people = readInfo(fileHandle)
 
-print('Name\t\t\t\t\t\t\tEmail\t\t\t\t\t\t\t\tPhone\t\t\t\t\t\t\tZip Code')
+title = ('Name', 'Email', 'Phone', 'Zip Code')
+template = '{:<20}{:<50}{:<20}{:<10}'
+
+x = template.format(*title)
+print(x)
+
+print('-' * 100)
+
 for person in people:
-    for i in person:
-        if i == person[-1]:
-            print(i[:20], end='\n')
-        else:
-            print(i[:20], end='\t\t\t\t\t\t')
+    x = template.format(*person)
+    print(x)
+
+
 
 
