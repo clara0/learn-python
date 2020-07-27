@@ -1,5 +1,4 @@
 # count letters in a file
-import collections
 
 
 def countLetters(file):
