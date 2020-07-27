@@ -18,6 +18,12 @@ def countLetters(file):
 fileHandle = open('/tmp/wget.rb')
 letterFrequency = countLetters(fileHandle)
 
-for i in letterFrequency:
-    print(f'{i[0]} => {i[1]}')
+header = ('Letter', 'Frequency')
+template = '{:<10}{:<10}'
 
+letter = template.format(*header)
+print(letter)
+
+for i in letterFrequency:
+    frequency = template.format(*letterFrequency)
+    print(frequency)
