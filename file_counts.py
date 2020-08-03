@@ -1,40 +1,13 @@
-# ! /usr/bin/python3
-# count letters in a file
+#!/usr/bin/python3
+import sys
 
 
-def countLetters(file):
-    letters = dict()
-
-    for line in file:
-        line = line.lower()
-        for char in line:
-            if char.isalpha():
-                letters[char] = letters.get(char, 0) + 1
-
-    sortedDict = sorted(letters.items(), key=lambda x: x[1])
-    return sortedDict
-
-
-fileHandle = open('/usr/local/Cellar/wget/1.20.3_2/.brew/wget.rb')
-letterFrequency = countLetters(fileHandle)
-
-header1 = ('Letter', 'Frequency')
-template1 = '{:<10}{:<10}'
-
-letter = template1.format(*header1)
-print(letter)
-
-for letter in letterFrequency:
-    frequency = template1.format(*letter)
-    print(frequency)
-
-
-def count(file):
+def count(fHand):
     lineCount = 0
     wordCount = 0
     charCount = 0
 
-    for line in file:
+    for line in fHand:
         lineCount += 1
         words = line.split()
         for word in words:
@@ -46,15 +19,14 @@ def count(file):
     return total
 
 
-fHand = open('/Users/clara/.bashrc')
-counts = count(fHand)
+counts = count(open(sys.argv[1]))
 
-header2 = ('Lines', 'Words', 'Chars')
-template2 = '{:<10}{:<10}{:<10}'
+header = ('Lines', 'Words', 'Chars')
+template = '{:<10}{:<10}{:<10}'
 
-x = template2.format(*header2)
+x = template.format(*header)
 print(x)
 
-row = template2.format(*counts)
+row = template.format(*counts)
 print(row)
 
