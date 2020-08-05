@@ -5,9 +5,7 @@ import sys
 def findWord(word, file):
     arguments = sys.argv
     lineList = []
-    if len(arguments) < 3:
-        raise Exception('usage: [word] [-i ignore case] [--ignore-case ignore case] [file]')
-    if arguments[1] == '-i' or '--ignore-case' and len(arguments) == 4:
+    if arguments[1] == '-i' or arguments[1] == '--ignore-case':
         ignoreCase = True
     else:
         ignoreCase = False
@@ -27,9 +25,12 @@ def findWord(word, file):
 
 try:
     fhand = open(sys.argv[-1])
-except FileNotFoundError:
+    word = sys.argv[(-1) - 1]
+    if word.startswith('-'):
+        raise Exception('usage: [word] [-i ignore case] [--ignore-case ignore case] [file]')
+except:
     raise Exception('usage: [word] [-i ignore case] [--ignore-case ignore case] [file]')
 
-x = findWord(sys.argv[(-1) - 1], fhand)
+x = findWord(word, fhand)
 for line in x:
     print(line)
