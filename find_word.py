@@ -23,7 +23,7 @@ def findWord(word, file):
 
 
 def getUsage():
-    return 'usage: sys.argv[0] [-i | --ignore-case ignore case] <word> <file>'
+    return f'usage: {sys.argv[0]} [-i | --ignore-case ignore case] <word> <file>'
 
 
 try:
