@@ -10,8 +10,9 @@ def findWord(word, file):
     else:
         ignoreCase = False
     if ignoreCase:
+        word = word.lower()
         for line1 in file:
-            if word.lower() in line1.lower():
+            if word in line1.lower():
                 lineList.append(line1)
     else:
         for line1 in file:
@@ -21,22 +22,19 @@ def findWord(word, file):
     return lineList
 
 
-def printUsage():
-    return 'usage: sys.argv[0] <word> [-i ignore case] [--ignore-case ignore case] <file>'
-
-
-message = printUsage()
+def getUsage():
+    return 'usage: sys.argv[0] [-i | --ignore-case ignore case] <word> <file>'
 
 
 try:
     fhand = open(sys.argv[-1])
     word = sys.argv[(-1) - 1]
     if word.startswith('-') and len(sys.argv) == 3:
-        raise Exception(message)
+        raise Exception(getUsage())
     elif sys.argv[1] != '-i' and sys.argv[1] != '--ignore-case':
-        raise Exception(message)
+        raise Exception(getUsage())
 except:
-    raise Exception(message)
+    raise Exception(getUsage())
 
 x = findWord(word, fhand)
 for line in x:
