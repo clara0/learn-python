@@ -20,15 +20,23 @@ def findWord(word, file):
 
     return lineList
 
+
+def printUsage():
+    return 'usage: sys.argv[0] <word> [-i ignore case] [--ignore-case ignore case] <file>'
+
+
+message = printUsage()
+
+
 try:
     fhand = open(sys.argv[-1])
     word = sys.argv[(-1) - 1]
     if word.startswith('-') and len(sys.argv) == 3:
-        raise Exception('usage: [word] [-i ignore case] [--ignore-case ignore case] [file]')
+        raise Exception(message)
     elif sys.argv[1] != '-i' and sys.argv[1] != '--ignore-case':
-        raise Exception('usage: [word] [-i ignore case] [--ignore-case ignore case] [file]')
+        raise Exception(message)
 except:
-    raise Exception('usage: [word] [-i ignore case] [--ignore-case ignore case] [file]')
+    raise Exception(message)
 
 x = findWord(word, fhand)
 for line in x:
