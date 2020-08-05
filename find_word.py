@@ -11,22 +11,21 @@ def findWord(word, file):
         ignoreCase = False
     if ignoreCase:
         for line1 in file:
-            words = line1.split()
-            for w in words:
-                if w.lower() == word.lower():
-                    lineList.append(line1)
+            if word.lower() in line1.lower():
+                lineList.append(line1)
     else:
         for line1 in file:
             if word in line1:
-                lineList.append(line)
+                lineList.append(line1)
 
     return lineList
-
 
 try:
     fhand = open(sys.argv[-1])
     word = sys.argv[(-1) - 1]
-    if word.startswith('-'):
+    if word.startswith('-') and len(sys.argv) == 3:
+        raise Exception('usage: [word] [-i ignore case] [--ignore-case ignore case] [file]')
+    elif sys.argv[1] != '-i' and sys.argv[1] != '--ignore-case':
         raise Exception('usage: [word] [-i ignore case] [--ignore-case ignore case] [file]')
 except:
     raise Exception('usage: [word] [-i ignore case] [--ignore-case ignore case] [file]')
