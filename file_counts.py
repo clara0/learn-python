@@ -3,7 +3,11 @@ import sys
 
 
 def count(fHand):
+    needLines = False
+    needWords = False
+    needChars = False
     termInuput = sys.argv
+    options = ('-l', '-w', '-c')
     lineCount = 0
     wordCount = 0
     charCount = 0
@@ -18,8 +22,9 @@ def count(fHand):
         needLines = True
         needWords = True
         needChars = True
-    if len(termInuput) < 2 and ('-l' or '-w' or '-c' not in termInuput) or \
-            (len(termInuput) > 2 and ('-l' or '-w' or '-c' in termInuput)):
+    if len(termInuput) < 2:
+        raise Exception('Enter valid files and options, please')
+    elif termInuput[1] not in options:
         raise Exception('Enter valid files and options, please')
 
     if needLines:
@@ -29,8 +34,7 @@ def count(fHand):
     if needWords:
         for line in fHand:
             words = line.split()
-            print(words)
-            wordCount = len(words)
+            wordCount += len(words)
         fHand.seek(0, 0)
     if needChars:
         for line in fHand:
