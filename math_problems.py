@@ -1,16 +1,27 @@
+#!/usr/bin/python3
 import random
 import sys
+from datetime import datetime
+import time
+
+
+minNum = 10
+maxNum = 1000
+totalQuestions = 20
 
 
 def math():
+    questions = 0
     generated = False
-    correct = 0
     wrong = 0
-    while correct < 20:
+    correct = 0
+    startTime = datetime.now()
+
+    while questions < totalQuestions:
         if not generated:
-            operations = [sys.argv[1], sys.argv[2]]
+            operations = ['-', '+']
             op = random.choice(operations)
-            nums = range(1, 101)
+            nums = range(minNum, maxNum)
             num1 = random.choice(nums)
             num2 = random.choice(nums)
             generated = True
@@ -18,18 +29,65 @@ def math():
                 answer = str(num1 + num2)
             elif op == '-':
                 answer = str(num1 - num2)
-            elif op == '*':
-                answer = str(num1 * num2)
-            elif op == '/':
-                answer = str(num1 / num2)
 
         question = input(f'{num1} {op} {num2} = ').strip()
         if answer != question:
             wrong += 1
-            continue
+            generated = False
+            questions += 1
         else:
-            # ready for the next round, reset generated flag to false
             correct += 1
             generated = False
+            questions += 1
 
-    print(f'Correct\t\tWrong\t\tScore\t\tTotal Retries\n{correct}\t\t{wrong}\t\t\t{correct / (correct + wrong) * 100}%\t\t\t{wrong}')
+    endTime = datetime.now()
+
+    timeTaken = endTime - startTime
+    timePerQuestion = timeTaken / totalQuestions
+    titles = ('Correct', 'Wrong', 'Time', 'Time per Question')
+    data = (correct, wrong, str(timeTaken), str(timePerQuestion))
+    template = '{:<20}{:<20}{:<20}{:<20}'
+
+    header = template.format(*titles)
+    print(header)
+
+    row = template.format(*data)
+    print(row)
+
+
+def getHelp():
+    return f'{sys.argv[0]} [--min=num] [--max=num] [--count=positive num]'
+
+
+if len(sys.argv) > 4:
+    raise Exception(getHelp())
+elif len(sys.argv) != 1:
+    for option in sys.argv[1:]:
+        if '--min=' in option:
+            value = option[6:]
+            if value.isnumeric():
+                minNum = int(value)
+            else:
+                raise Exception(getHelp())
+        elif '--max=' in option:
+            value = option[6:]
+            if value.isnumeric():
+                maxNum = int(value)
+            else:
+                raise Exception(getHelp())
+        elif '--count=':
+            value = option[12:]
+            if value.isnumeric():
+                totalQuestions = int(value)
+            else:
+                raise Exception(getHelp())
+
+if maxNum < minNum:
+    raise Exception(getHelp())
+
+if totalQuestions <= 0:
+    raise Exception(getHelp())
+
+
+math()
+
