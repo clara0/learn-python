@@ -44,9 +44,10 @@ def math():
 
     timeTaken = endTime - startTime
     timePerQuestion = timeTaken / totalQuestions
-    titles = ('Correct', 'Wrong', 'Time', 'Time per Question')
-    data = (correct, wrong, str(timeTaken), str(timePerQuestion))
-    template = '{:<20}{:<20}{:<20}{:<20}'
+    percentage = (correct / (correct + wrong)) * 100
+    titles = ('\nCorrect', 'Wrong', 'Duration', 'Time per Question', 'Percentage')
+    data = (correct, wrong, str(timeTaken), str(timePerQuestion), str(percentage) + '%')
+    template = '{:<20}{:<20}{:<20}{:<20}{:<20}'
 
     header = template.format(*titles)
     print(header)
