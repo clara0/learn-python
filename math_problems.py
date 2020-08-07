@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 import random
 import sys
 from datetime import datetime
@@ -12,33 +13,27 @@ totalQuestions = 20
 
 def math():
     questions = 0
-    generated = False
     wrong = 0
     correct = 0
     startTime = datetime.now()
 
     while questions < totalQuestions:
-        if not generated:
-            operations = ['-', '+']
-            op = random.choice(operations)
-            nums = range(minNum, maxNum)
-            num1 = random.choice(nums)
-            num2 = random.choice(nums)
-            generated = True
-            if op == '+':
-                answer = str(num1 + num2)
-            elif op == '-':
-                answer = str(num1 - num2)
+        operations = ('-', '+')
+        op = random.choice(operations)
+        nums = range(minNum, maxNum)
+        num1 = random.choice(nums)
+        num2 = random.choice(nums)
+        if op == '+':
+            answer = str(num1 + num2)
+        elif op == '-':
+            answer = str(num1 - num2)
 
         question = input(f'{num1} {op} {num2} = ').strip()
         if answer != question:
             wrong += 1
-            generated = False
-            questions += 1
         else:
             correct += 1
-            generated = False
-            questions += 1
+        questions += 1
 
     endTime = datetime.now()
 
@@ -57,7 +52,7 @@ def math():
 
 
 def getHelp():
-    return f'{sys.argv[0]} [--min=<minimum-number>] [--max=<maximum-number>] [--count=<number-of-questions>]'
+    return f'usage: {sys.argv[0]} [--min=<minimum-number>] [--max=<maximum-number>] [--count=<number-of-questions>]'
 
 
 if len(sys.argv) > 4:
