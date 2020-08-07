@@ -56,7 +56,7 @@ def math():
 
 
 def getHelp():
-    return f'{sys.argv[0]} [--min=num] [--max=num] [--count=positive num]'
+    return f'{sys.argv[0]} [--min=<minimum-number>] [--max=<maximum-number>] [--count=<number-of-questions>]'
 
 
 if len(sys.argv) > 4:
@@ -76,7 +76,7 @@ elif len(sys.argv) != 1:
             else:
                 raise Exception(getHelp())
         elif '--count=':
-            value = option[12:]
+            value = option[8:]
             if value.isnumeric():
                 totalQuestions = int(value)
             else:
