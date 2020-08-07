@@ -53,6 +53,7 @@ except:
         else:
             path = sys.argv[-1] + '/' + sys.argv[(-1) - 1]
             destination = open(path, 'w+')
+            fileExists = False
 
 
 copyFile(source, destination)
