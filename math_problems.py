@@ -9,6 +9,9 @@ parser = argparse.ArgumentParser(description='Prints out math problems to answer
 parser.add_argument('-n', '--minimum', type=int, metavar='', help='Minimum number')
 parser.add_argument('-m', '--maximum', type=int, metavar='', help='Maximum number')
 parser.add_argument('-c', '--count', type=int, metavar='', help='Number of questions')
+group = parser.add_mutually_exclusive_group()
+group.add_argument('-q', '--quiet', action='store_true', help='print quiet')
+group.add_argument('-v', '--verbose', action='store_true', help='print verbose')
 args = parser.parse_args()
 
 
@@ -65,11 +68,14 @@ def math():
     data = (correct, wrong, str(timeTaken), str(timePerQuestion), str(percentage) + '%')
     template = '{:<20}{:<20}{:<20}{:<20}{:<20}'
 
-    header = template.format(*titles)
-    print(header)
+    if args.quiet:
+        pass
+    else:
+        header = template.format(*titles)
+        print(header)
 
-    row = template.format(*data)
-    print(row)
+        row = template.format(*data)
+        print(row)
 
 
 math()
