@@ -6,9 +6,9 @@ from datetime import datetime
 
 
 parser = argparse.ArgumentParser(description='Prints out math problems to answer')
-parser.add_argument('-n', '--minimum', type=int, metavar='', help='Minimum number')
-parser.add_argument('-m', '--maximum', type=int, metavar='', help='Maximum number')
-parser.add_argument('-c', '--count', type=int, metavar='', help='Number of questions')
+parser.add_argument('-n', '--minimum', type=int, metavar='', default=10, help='Minimum number')
+parser.add_argument('-m', '--maximum', type=int, metavar='', default=100, help='Maximum number')
+parser.add_argument('-c', '--count', type=int, metavar='', default=20, help='Number of questions')
 group = parser.add_mutually_exclusive_group()
 group.add_argument('-q', '--quiet', action='store_true', help='print quiet')
 group.add_argument('-v', '--verbose', action='store_true', help='print verbose')
@@ -33,13 +33,6 @@ def math():
     if args.count:
         totalQuestions = args.count
         countChosen = True
-
-    if not minNumChosen:
-        minNum = 10
-    if not maxNumChosen:
-        maxNum = 1000
-    if not countChosen:
-        totalQuestions = 20
 
     while questionsDone < totalQuestions:
         operations = ('-', '+')
