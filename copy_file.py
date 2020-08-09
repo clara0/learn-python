@@ -24,41 +24,41 @@ def getHelp():
     return f'usage: {sys.argv[0]} [-o | --overwrite] [-h] <source> <target>'
 
 
-try:
-    source = open(sys.argv[(-1) - 1])
-    if sys.argv[1] not in options:
-        if len(sys.argv) != 3:
-            raise Exception(getHelp())
-except:
-    raise Exception(getHelp())
-
-try:
-    destination = open(sys.argv[-1])
-    fileExists = True
-except:
+if __name__ == "__main__":
     try:
-        destination = open(sys.argv[-1], 'w+')
-        fileExists = False
-    except IsADirectoryError:
-        if sys.argv[-1].endswith('/'):
-            path = sys.argv[-1] + sys.argv[(-1) - 1]
-            try:
-                destination = open(path)
-                fileExists = True
-            except:
-                destination = open(path, 'w+')
-                fileExists = False
-        else:
-            try:
-                path = sys.argv[-1] + '/' + sys.argv[(-1) - 1]
-                destination = open(path)
-                fileExists = True
-            except:
-                path = sys.argv[-1] + '/' + sys.argv[(-1) - 1]
-                destination = open(path, 'w+')
-                fileExists = False
+        source = open(sys.argv[(-1) - 1])
+        if sys.argv[1] not in options:
+            if len(sys.argv) != 3:
+                raise Exception(getHelp())
+    except:
+        raise Exception(getHelp())
 
+    try:
+        destination = open(sys.argv[-1])
+        fileExists = True
+    except:
+        try:
+            destination = open(sys.argv[-1], 'w+')
+            fileExists = False
+        except IsADirectoryError:
+            if sys.argv[-1].endswith('/'):
+                path = sys.argv[-1] + sys.argv[(-1) - 1]
+                try:
+                    destination = open(path)
+                    fileExists = True
+                except:
+                    destination = open(path, 'w+')
+                    fileExists = False
+            else:
+                try:
+                    path = sys.argv[-1] + '/' + sys.argv[(-1) - 1]
+                    destination = open(path)
+                    fileExists = True
+                except:
+                    path = sys.argv[-1] + '/' + sys.argv[(-1) - 1]
+                    destination = open(path, 'w+')
+                    fileExists = False
 
-copyFile(source, destination)
-source.close()
-destination.close()
+    copyFile(source, destination)
+    source.close()
+    destination.close()

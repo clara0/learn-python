@@ -14,15 +14,16 @@ def countLetters(file):
     return sortedDict
 
 
-fileHandle = open('/usr/local/Cellar/wget/1.20.3_2/.brew/wget.rb')
-letterFrequency = countLetters(fileHandle)
+if __name__ == "__main__":
+    fileHandle = open('/usr/local/Cellar/wget/1.20.3_2/.brew/wget.rb')
+    letterFrequency = countLetters(fileHandle)
 
-header = ('Letter', 'Frequency')
-template = '{:<10}{:<10}'
+    header = ('Letter', 'Frequency')
+    template = '{:<10}{:<10}'
 
-letter = template.format(*header)
-print(letter)
+    letter = template.format(*header)
+    print(letter)
 
-for letter in letterFrequency:
-    frequency = template.format(*letter)
-    print(frequency)
+    for letter in letterFrequency:
+        frequency = template.format(*letter)
+        print(frequency)
