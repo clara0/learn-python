@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 import sys
 options = ('-o', '--overwrite', '-h')
 
@@ -45,15 +46,17 @@ except:
                 destination = open(path)
                 fileExists = True
             except:
-                try:
-                    destination = open(path, 'w+')
-                    fileExists = False
-                except:
-                    raise Exception(getHelp())
+                destination = open(path, 'w+')
+                fileExists = False
         else:
-            path = sys.argv[-1] + '/' + sys.argv[(-1) - 1]
-            destination = open(path, 'w+')
-            fileExists = False
+            try:
+                path = sys.argv[-1] + '/' + sys.argv[(-1) - 1]
+                destination = open(path)
+                fileExists = True
+            except:
+                path = sys.argv[-1] + '/' + sys.argv[(-1) - 1]
+                destination = open(path, 'w+')
+                fileExists = False
 
 
 copyFile(source, destination)
