@@ -71,4 +71,5 @@ def math():
         print(row)
 
 
-math()
+if __name__ == "__main__":
+    math()
