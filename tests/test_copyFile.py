@@ -4,21 +4,34 @@ import copy_file
 
 
 class TestCopyFiles(unittest.TestCase):
+    def setUp(self):
+        source = '/tmp/a1.txt'
+        self.sourcefile = open(source, 'w+')
+        self.sourcefile.write('This is the source file.')
+
+    def tearDown(self):
+        source = '/tmp/a1.txt'
+        dest = '/tmp/b1.txt'
+        os.remove(source)
+        os.remove(dest)
+
     def test_copyFile(self):
-        source = '/Users/clara/PycharmProjects/learn-python/date_and_time.py'
-        destination = '/Users/clara/PycharmProjects/learn-python/a.txt'
+        def getFiles():
+            sourceFile = '/tmp/a1.txt'
+            destFile = '/tmp/b1.txt'
+            files = (sourceFile, destFile)
+            return files
+
+        files = getFiles()
+
         overwrite = True
         fileExists = False
-        copy_file.copyFile(source, overwrite, fileExists, destination)
-        sourceSize = os.stat('/Users/clara/PycharmProjects/learn-python/date_and_time.py')
-        destSize = os.stat('/Users/clara/PycharmProjects/learn-python/a.txt')
+        copy_file.copyFile(files[0], overwrite, fileExists, files[1])
+        sourceSize = os.stat(files[0])
+        destSize = os.stat(files[1])
         self.assertEqual(sourceSize.st_size, destSize.st_size)
 
-        source = '/Users/clara/PycharmProjects/learn-python/date_and_time.py'
-        destination = '/Users/clara/PycharmProjects/learn-python/a.txt'
         overwrite = False
-        fileExists = False
-        copy_file.copyFile(source, overwrite, fileExists, destination)
-        sourceSize = os.stat('/Users/clara/PycharmProjects/learn-python/date_and_time.py')
-        destSize = os.stat('/Users/clara/PycharmProjects/learn-python/a.txt')
-        self.assertEqual(sourceSize.st_size, destSize.st_size)
+        fileExists = True
+        with self.assertRaises(Exception) as cm:
+            copy_file.copyFile(files[0], overwrite, fileExists, files[1])
