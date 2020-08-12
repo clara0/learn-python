@@ -1,64 +1,53 @@
 #!/usr/bin/python3
 
-import sys
-options = ('-o', '--overwrite', '-h')
+import os
+import shutil
+import argparse
 
 
-def copyFile(sourceFile, targetFile):
-    arguments = sys.argv
-    if arguments[1] in options:
-        if arguments[1] != '-h':
-            for line in sourceFile:
-                targetFile.write(line)
-        else:
-            raise Exception(getHelp())
+def copyFile(sourceFile, overwriteFile, fileExists, targetFile):
+    if overwriteFile:
+        shutil.copy2(sourceFile, targetFile)
     else:
         if not fileExists:
-            for line in sourceFile:
-                targetFile.write(line)
+            shutil.copy2(sourceFile, targetFile)
         else:
-            raise Exception('The target file already exists\n' + getHelp())
-
-
-def getHelp():
-    return f'usage: {sys.argv[0]} [-o | --overwrite] [-h] <source> <target>'
+            raise Exception('The file already exists.')
 
 
 if __name__ == "__main__":
-    try:
-        source = open(sys.argv[(-1) - 1])
-        if sys.argv[1] not in options:
-            if len(sys.argv) != 3:
-                raise Exception(getHelp())
-    except:
-        raise Exception(getHelp())
+    parser = argparse.ArgumentParser(description='copy file')
+    parser.add_argument('source', help='source file')
+    parser.add_argument('-o', '--overwrite', type=bool, default=False, required=True, help='overwrite the file')
+    parser.add_argument('destination', help='destination file')
+    args = parser.parse_args()
 
     try:
-        destination = open(sys.argv[-1])
-        fileExists = True
+        source = open(args.source)
+    except:
+        raise FileNotFoundError
+
+    try:
+        destination = open(args.destination)
+        exists = True
     except:
         try:
-            destination = open(sys.argv[-1], 'w+')
-            fileExists = False
+            destination = open(args.destination, 'w+')
         except IsADirectoryError:
-            if sys.argv[-1].endswith('/'):
-                path = sys.argv[-1] + sys.argv[(-1) - 1]
-                try:
-                    destination = open(path)
-                    fileExists = True
-                except:
-                    destination = open(path, 'w+')
-                    fileExists = False
-            else:
-                try:
-                    path = sys.argv[-1] + '/' + sys.argv[(-1) - 1]
-                    destination = open(path)
-                    fileExists = True
-                except:
-                    path = sys.argv[-1] + '/' + sys.argv[(-1) - 1]
-                    destination = open(path, 'w+')
-                    fileExists = False
+            try:
+                destination = open(args.destination + f'/{source}', 'w+')
+            except:
+                destination = open(args.destination + source, 'w+')
+        exists = False
 
-    copyFile(source, destination)
+    sourcePath = os.path.abspath(args.source)
+    destPath = os.path.abspath(args.destination)
+
+    if args.overwrite:
+        overwrite = True
+    else:
+        overwrite = False
+
+    copyFile(sourcePath, overwrite, exists, destPath)
     source.close()
     destination.close()
