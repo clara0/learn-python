@@ -8,6 +8,7 @@ class TestCopyFiles(unittest.TestCase):
         source = '/tmp/a1.txt'
         self.sourcefile = open(source, 'w+')
         self.sourcefile.write('This is the source file.')
+        self.sourcefile.close()
 
     def tearDown(self):
         source = '/tmp/a1.txt'
