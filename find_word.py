@@ -28,7 +28,7 @@ def getUsage():
     return f'usage: {sys.argv[0]} [-i | --ignore-case ignore case] <word> <file>'
 
 
-if __name__ == "__name__":
+if __name__ == "__main__":
     try:
         options = ['-i', '--ignore-case']
         fhand = open(sys.argv[-1])
@@ -38,7 +38,6 @@ if __name__ == "__name__":
         elif sys.argv[1] not in options and len(sys.argv) == 4:
             print(sys.argv[1])
             raise Exception(getUsage())
-
     except:
         raise Exception(getUsage())
 
