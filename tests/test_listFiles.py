@@ -20,6 +20,9 @@ class TestListFiles(unittest.TestCase):
         listedContents = list_files.listFiles('/tmp/a', [], recursive=True)
         self.assertEqual(listedContents, [['aa'], 'under_a.txt', ['b', 'under_b.txt', 'c']])
 
+        listedContents = list_files.listFiles('/tmp/a', [], recursive=False)
+        self.assertEqual(listedContents, ['aa', 'under_a.txt', 'b'])
+
         listedContents = list_files.listFiles('/tmp/a', [])
         self.assertEqual(listedContents, ['aa', 'under_a.txt', 'b'])
 
