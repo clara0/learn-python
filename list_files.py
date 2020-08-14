@@ -9,7 +9,7 @@ def listFiles(directory, currentResult, recursive=False):
         for subelement in contents:
             fullpath = os.path.join(directory, subelement)
             if os.path.isdir(fullpath):
-                currentResult.append(listFiles(fullpath, [subelement]))
+                currentResult.append(listFiles(fullpath, [subelement], recursive=True))
             else:
                 currentResult.append(subelement)
     else:
