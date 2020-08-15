@@ -2,18 +2,19 @@ import os
 
 
 def findFile(directory, file, recursive=False):
-    result = []
+    fileOccurrences = []
     contents = os.listdir(directory)
 
     for element in contents:
         fullPath = os.path.join(directory, element)
         if os.path.isdir(fullPath):
-            result.extend(findFile(fullPath, file, recursive=True))
+            if recursive:
+                fileOccurrences.extend(findFile(fullPath, file, recursive=True))
         else:
             if element == file:
-                result.append(file)
+                fileOccurrences.append(fullPath)
 
-    return result
+    return fileOccurrences
 
 
 if __name__ == '__main__':
