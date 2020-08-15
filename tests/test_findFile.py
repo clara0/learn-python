@@ -18,17 +18,17 @@ class TestFindFile(unittest.TestCase):
         shutil.rmtree('/tmp/dir1.5')
 
     def test_findFile(self):
-        fileOccurences1 = find_file.findFile('/tmp', '1.txt', recursive=True)
-        self.assertEqual(fileOccurences1, ['/tmp/dir1/dir2/1.txt', '/tmp/dir1/1.txt'])
+        fileOccurrences1 = find_file.findFile('/tmp', '1.txt', recursive=True)
+        self.assertEqual(fileOccurrences1, ['/tmp/dir1/dir2/1.txt', '/tmp/dir1/1.txt'])
 
-        fileOccurences2 = find_file.findFile('/tmp', '1.txt')
-        self.assertEqual(fileOccurences2, [])
+        fileOccurrences2 = find_file.findFile('/tmp', '1.txt')
+        self.assertEqual(fileOccurrences2, [])
 
-        fileOccurences3 = find_file.findFile('/tmp/dir1', '1.txt')
-        self.assertEqual(fileOccurences3, ['/tmp/dir1/1.txt'])
+        fileOccurrences3 = find_file.findFile('/tmp/dir1', '1.txt')
+        self.assertEqual(fileOccurrences3, ['/tmp/dir1/1.txt'])
 
-        fileOccurences4 = find_file.findFile('/tmp', 'foo.txt')
-        self.assertEqual(fileOccurences4, [])
+        fileOccurrences4 = find_file.findFile('/tmp', 'foo.txt')
+        self.assertEqual(fileOccurrences4, [])
 
 
 
