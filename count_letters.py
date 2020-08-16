@@ -15,8 +15,8 @@ def countLetters(file):
 
 
 if __name__ == "__main__":
-    fileHandle = open('/usr/local/Cellar/wget/1.20.3_2/.brew/wget.rb')
-    letterFrequency = countLetters(fileHandle)
+    with open('/usr/local/Cellar/wget/1.20.3_2/.brew/wget.rb') as fileHandle:
+        letterFrequency = countLetters(fileHandle)
 
     header = ('Letter', 'Frequency')
     template = '{:<10}{:<10}'

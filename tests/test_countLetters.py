@@ -5,9 +5,8 @@ import count_letters
 
 class TestCountLetters(unittest.TestCase):
     def setUp(self):
-        fhand = open('/tmp/a.txt', 'w+')
-        fhand.write('aaabbc')
-        fhand.close()
+        with open('/tmp/a.txt', 'w+') as fhand:
+            fhand.write('aaabbc')
 
     def tearDown(self):
         os.remove('/tmp/a.txt')

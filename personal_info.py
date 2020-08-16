@@ -21,8 +21,8 @@ def readInfo(file):
     return finalList
 
 
-fileHandle = open('/Users/clara/Downloads/dataJul-26-2020.csv')
-people = readInfo(fileHandle)
+with open('/Users/clara/Downloads/dataJul-26-2020.csv') as fileHandle:
+    people = readInfo(fileHandle)
 
 title = ('Name', 'Email', 'Phone', 'Zip Code')
 template = '{:<20}{:<50}{:<20}{:<10}'

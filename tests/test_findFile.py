@@ -8,10 +8,10 @@ class TestFindFile(unittest.TestCase):
     def setUp(self):
         os.makedirs('/tmp/dir1/dir2/dir3')
         os.mkdir('/tmp/dir1.5')
-        fhand1 = open('/tmp/dir1/1.txt', 'w+')
-        fhand2 = open('/tmp/dir1/dir2/1.txt', 'w+')
-        fhand1.close()
-        fhand2.close()
+        with open('/tmp/dir1/1.txt', 'w+') as fhand1:
+            pass
+        with open('/tmp/dir1/dir2/1.txt', 'w+') as fhand2:
+            pass
 
     def tearDown(self):
         shutil.rmtree('/tmp/dir1')

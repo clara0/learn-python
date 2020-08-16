@@ -5,10 +5,8 @@ import copy_file
 
 class TestCopyFiles(unittest.TestCase):
     def setUp(self):
-        source = '/tmp/a1.txt'
-        self.sourcefile = open(source, 'w+')
-        self.sourcefile.write('This is the source file.')
-        self.sourcefile.close()
+        with open('/tmp/a1.txt', 'w+') as sourceFile:
+            sourceFile.write('This is the source file.')
 
     def tearDown(self):
         source = '/tmp/a1.txt'
