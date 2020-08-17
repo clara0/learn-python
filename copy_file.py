@@ -23,25 +23,28 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     try:
-        source = open(args.source)
+        with open(args.source) as source:
+            sourcePath = os.path.abspath(args.source)
     except:
         raise FileNotFoundError
 
     try:
-        destination = open(args.destination)
-        exists = True
+        with open(args.destination) as destination:
+            exists = True
+            destPath = os.path.abspath(args.destination)
+
     except:
         try:
             destination = open(args.destination, 'w+')
+            destPath = os.path.abspath(args.destination)
         except IsADirectoryError:
             try:
-                destination = open(args.destination + f'/{source}', 'w+')
+                with open(args.destination + f'/{source}', 'w+') as destination:
+                    destPath = os.path.abspath(args.destination)
             except:
-                destination = open(args.destination + source, 'w+')
-        exists = False
-
-    sourcePath = os.path.abspath(args.source)
-    destPath = os.path.abspath(args.destination)
+                with open(args.destination + source, 'w+') as destination:
+                    destPath = os.path.abspath(args.destination)
+            exists = False
 
     if args.overwrite:
         overwrite = True
@@ -49,5 +52,3 @@ if __name__ == "__main__":
         overwrite = False
 
     copyFile(sourcePath, overwrite, exists, destPath)
-    source.close()
-    destination.close()
