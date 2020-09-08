@@ -16,11 +16,11 @@ def isTriangle(side1, side2, side3):
 
 while True:
     userInput = input('Enter three side lengths:').strip()
-    sides = [side for side in userInput.split()]
+    sides = userInput.split()
     if len(sides) != 3:
         continue
     try:
-        result = isTriangle(int(sides[0]), int(sides[1]), int(sides[2]))
+        result = isTriangle(float(sides[0]), float(sides[1]), float(sides[2]))
         print(result)
     except:
         continue
