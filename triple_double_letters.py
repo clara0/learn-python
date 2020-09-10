@@ -26,6 +26,6 @@ if __name__ == '__main__':
     for line in file:
         word = (line.decode('utf-8')).strip()
         result = findTripleDoubles(word)
-        if result is not False:
+        if result:
             resultList.append(word)
     print(resultList)

@@ -41,7 +41,7 @@ resultList = []
 
 for i in range(1, 999996):
     result = isPalindrome(i)
-    if result is True:
+    if result:
         resultList.append(i)
 
 print(resultList)
