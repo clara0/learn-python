@@ -7,12 +7,6 @@ def palindrome(num):
     return False
 
 
-def addZero(num):
-    if len(num) < 6:
-        num = '0' * (6 - len(str(num))) + str(num)
-    return num
-
-
 def addOne(num):
     num = int(num) + 1
     return str(num)
@@ -20,17 +14,17 @@ def addOne(num):
 
 def isPalindrome(num):
     num = str(num)
-    num = addZero(num)
 
+    num = num.zfill(6)
     value = palindrome(num[2:])
     if value:
-        num = addZero(addOne(num))
+        num = num.zfill(6)
         value2 = palindrome(num[1:])
         if value2:
-            num = addZero(addOne(num))
+            num = num.zfill(6)
             value3 = palindrome(num[1:-2])
             if value3:
-                num = addZero(addOne(num))
+                num = num.zfill(6)
                 value4 = palindrome(num)
                 if value4:
                     return True
