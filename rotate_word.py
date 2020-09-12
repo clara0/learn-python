@@ -26,9 +26,11 @@ if __name__ == '__main__':
         string = input('Enter a word: ').strip()
         if string.isalpha():
             num = input('Enter a number: ').strip()
-            if num.isnumeric():
+            try:
                 result = rotate(string, int(num))
                 print(result)
+            except:
+                continue
 
 
 
