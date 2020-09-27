@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 
-def listNum(num1):
+def listDigits(num1):
     digitList = []
     while True:
         if num1 != 0:
@@ -13,7 +13,7 @@ def listNum(num1):
     return tuple(digitList[::-1])
 
 
-def verifyNum(num):
+def LuhnTest(num):
     backwardsNum = num[::-1]
     sum1 = 0
     sum2 = 0
@@ -23,7 +23,7 @@ def verifyNum(num):
         else:
             doubledDigit = int(digit) * 2
             if doubledDigit > 9:
-                digits = listNum(doubledDigit)
+                digits = listDigits(doubledDigit)
                 sum2 += (digits[0] + digits[1])
             else:
                 sum2 += doubledDigit
@@ -40,7 +40,7 @@ if __name__ == '__main__':
         num = input('Enter a number: ').strip()
         if num != '':
             try:
-                result = verifyNum(num)
+                result = LuhnTest(num)
                 print(result)
             except:
                 continue
