@@ -1,8 +1,20 @@
 #!/usr/bin/python3
 
 
+def listNum(num1):
+    digitList = []
+    while True:
+        if num1 != 0:
+            digitList.append(num1 % 10)
+            num1 = num1 // 10
+        else:
+            break
+
+    return tuple(digitList[::-1])
+
+
 def verifyNum(num):
-    backwardsNum = str(num)[::-1]
+    backwardsNum = num[::-1]
     sum1 = 0
     sum2 = 0
     for index, digit in enumerate(backwardsNum, 1):
@@ -11,7 +23,8 @@ def verifyNum(num):
         else:
             doubledDigit = int(digit) * 2
             if doubledDigit > 9:
-                sum2 += (int(str(doubledDigit)[0]) + int(str(doubledDigit)[1]))
+                digits = listNum(doubledDigit)
+                sum2 += (digits[0] + digits[1])
             else:
                 sum2 += doubledDigit
 
@@ -25,8 +38,9 @@ def verifyNum(num):
 if __name__ == '__main__':
     while True:
         num = input('Enter a number: ').strip()
-        try:
-            result = verifyNum(int(num))
-            print(result)
-        except:
-            continue
+        if num != '':
+            try:
+                result = verifyNum(num)
+                print(result)
+            except:
+                continue
