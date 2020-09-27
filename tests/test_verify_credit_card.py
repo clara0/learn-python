@@ -8,6 +8,9 @@ class TestVerifyCreditCard(unittest.TestCase):
     def test_listDigits(self):
         self.assertEqual(verify_credit_card.listDigits(123), (1, 2, 3))
         self.assertEqual(verify_credit_card.listDigits(1), (1,))
+        self.assertEqual(verify_credit_card.listDigits(0), (0,))
+        self.assertEqual(verify_credit_card.listDigits(-123), (1, 2, 3))
+        self.assertEqual(verify_credit_card.listDigits(123000000), (1, 2, 3, 0, 0, 0, 0, 0, 0))
 
     def test_LuhnTest(self):
         self.assertEqual(verify_credit_card.LuhnTest('4111111111111111'), True)
