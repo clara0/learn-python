@@ -4,13 +4,21 @@
 def listDigits(num1):
     digitList = []
     while True:
-        if num1 != 0:
-            digitList.append(num1 % 10)
-            num1 = num1 // 10
-        else:
-            break
+        if 9 < num1 or num1 < -9:
+            if num1 != 0:
+                if num1 < 0:
+                    num1 = num1 * -1
+                    digitList.append(num1 % 10)
+                    num1 = num1 // 10
+                else:
+                    digitList.append(num1 % 10)
+                    num1 = num1 // 10
+            else:
+                break
 
-    return tuple(digitList[::-1])
+        else:
+            digitList.append(num1)
+            return tuple(digitList[::-1])
 
 
 def LuhnTest(num):
@@ -35,6 +43,8 @@ def LuhnTest(num):
     return False
 
 
+result = listDigits(-123)
+print(result)
 if __name__ == '__main__':
     while True:
         num = input('Enter a number: ').strip()
