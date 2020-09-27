@@ -3,16 +3,12 @@
 
 def listDigits(num1):
     digitList = []
-    if num1 < 0:
-        num1 = num1 * -1
+    num1 = abs(num1)
 
     while True:
         if 9 < num1:
-            if num1 != 0:
-                digitList.append(num1 % 10)
-                num1 = num1 // 10
-            else:
-                break
+            digitList.append(num1 % 10)
+            num1 = num1 // 10
 
         else:
             digitList.append(num1)
