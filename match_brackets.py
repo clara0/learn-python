@@ -10,9 +10,7 @@ def matchBrackets(equation):
             equationBrackets.append(i)
         if i in lastBrackets:
             try:
-                if firstBrackets[lastBrackets.index(i)] == equationBrackets[-1]:
-                    equationBrackets.pop()
-                else:
+                if firstBrackets[lastBrackets.index(i)] != equationBrackets.pop():
                     return False
             except:
                 return False
