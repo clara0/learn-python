@@ -14,6 +14,15 @@ def listDigits(num1):
             return tuple(digitList[::-1])
 
 
+def listDigits2(num1):
+    num1 = abs(num1)
+    if num1 < 10:
+        return (num1,)
+    else:
+        digit1 = num1 % 10
+        return listDigits2(num1 // 10) + (digit1,)
+
+
 def LuhnTest(num):
     backwardsNum = num[::-1]
     sum1 = 0

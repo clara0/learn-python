@@ -5,15 +5,21 @@ import verify_credit_card
 
 
 class TestVerifyCreditCard(unittest.TestCase):
+    def help_function(self, function):
+        self.assertEqual(function(123), (1, 2, 3))
+        self.assertEqual(function(1), (1,))
+        self.assertEqual(function(0), (0,))
+        self.assertEqual(function(-123), (1, 2, 3))
+        self.assertEqual(function(-1), (1,))
+        self.assertEqual(function(-140), (1, 4, 0))
+        self.assertEqual(function(123000000), (1, 2, 3, 0, 0, 0, 0, 0, 0))
+        self.assertEqual(function(-123000000), (1, 2, 3, 0, 0, 0, 0, 0, 0))
+
     def test_listDigits(self):
-        self.assertEqual(verify_credit_card.listDigits(123), (1, 2, 3))
-        self.assertEqual(verify_credit_card.listDigits(1), (1,))
-        self.assertEqual(verify_credit_card.listDigits(0), (0,))
-        self.assertEqual(verify_credit_card.listDigits(-123), (1, 2, 3))
-        self.assertEqual(verify_credit_card.listDigits(-1), (1,))
-        self.assertEqual(verify_credit_card.listDigits(-140), (1, 4, 0))
-        self.assertEqual(verify_credit_card.listDigits(123000000), (1, 2, 3, 0, 0, 0, 0, 0, 0))
-        self.assertEqual(verify_credit_card.listDigits(-123000000), (1, 2, 3, 0, 0, 0, 0, 0, 0))
+        self.help_function(verify_credit_card.listDigits)
+
+    def test_listDigits2(self):
+        self.help_function(verify_credit_card.listDigits2)
 
     def test_LuhnTest(self):
         self.assertEqual(verify_credit_card.LuhnTest('4111111111111111'), True)
