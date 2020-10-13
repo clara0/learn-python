@@ -19,4 +19,5 @@ class TestCheckPhoneNumber(TestCase):
         self.assertFalse(check_phone_number.checkPhoneNum('1 234234 555 5555'))
         self.assertFalse(check_phone_number.checkPhoneNum('2( 555 5555'))
         self.assertFalse(check_phone_number.checkPhoneNum('2555) 555 5555'))
-        self.assertFalse(check_phone_number.checkPhoneNum('(1(555) 555 5555)'))
+        self.assertFalse(check_phone_number.checkPhoneNum('(1 (555 555 5555)'))
+        self.assertFalse(check_phone_number.checkPhoneNum('(1 (555 dddddd55   5555)'))
