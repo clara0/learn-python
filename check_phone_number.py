@@ -2,7 +2,7 @@
 
 
 def checkPhoneNum(phoneNum):
-    notValid = '~`!@#$%^&*_+={}[]|\\:;\'"?/>.<,qwertyuiopasdfghjklzxcvbnm'
+    valid = '-() '
     numbers = 0
     for i in phoneNum:
         if i.isnumeric():
@@ -10,7 +10,8 @@ def checkPhoneNum(phoneNum):
     if 9 < numbers < 12:
         tripleNumCount = 0
         for count, i in enumerate(phoneNum):
-            if i in notValid:
+            if i not in valid and not i.isnumeric():
+                print(i)
                 return False
 
             if tripleNumCount == 2 and phoneNum[-4:].isnumeric():
