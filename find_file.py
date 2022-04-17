@@ -1,6 +1,11 @@
 import os
 
 
+def main():
+    result = findFile('/tmp', 'a.txt', recursive=False)
+    print(result)
+
+
 def findFile(directory, file, recursive=False):
     fileOccurrences = []
     contents = os.listdir(directory)
@@ -18,5 +23,4 @@ def findFile(directory, file, recursive=False):
 
 
 if __name__ == '__main__':
-    result = findFile('/tmp', 'a.txt', recursive=False)
-    print(result)
+    main()

@@ -3,6 +3,15 @@
 import sys
 
 
+def main():
+    while True:
+        userInput = input('Enter a number: ').strip()
+        try:
+            print(f'The square root of {userInput} is {squareRoot(float(userInput))}.')
+        except:
+            continue
+
+
 def squareRoot(num):
     guess = num / 2
     while True:
@@ -14,9 +23,4 @@ def squareRoot(num):
 
 
 if __name__ == '__main__':
-    while True:
-        userInput = input('Enter a number: ').strip()
-        try:
-            print(f'The square root of {userInput} is {squareRoot(float(userInput))}.')
-        except:
-            continue
+    main()

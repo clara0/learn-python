@@ -1,6 +1,11 @@
 #!/usr/bin/python3
 
 
+def main():
+    result = rosellaCode("test", "tets")
+    print(result)
+
+
 def rosellaCode(str1, str2):
     sameLetters = ""
     for char in str1:
@@ -14,5 +19,4 @@ def rosellaCode(str1, str2):
 
 
 if __name__ == '__main__':
-    result = rosellaCode("test", "tets")
-    print(result)
+    main()

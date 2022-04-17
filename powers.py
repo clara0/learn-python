@@ -1,6 +1,13 @@
 #!/usr/bin/python3
 
 
+def main():
+    while True:
+        firstNum = input('Enter a base number: ').strip()
+        secondNum = input('Enter another number: ').strip()
+        print(f'{secondNum} is a power of {firstNum}? {isPower(float(firstNum), float(secondNum))}')
+
+
 def isPower(baseNum, powerNum):
     try:
         if powerNum % baseNum == 0:
@@ -16,7 +23,4 @@ def isPower(baseNum, powerNum):
 
 
 if __name__ == '__main__':
-    while True:
-        firstNum = input('Enter a base number: ').strip()
-        secondNum = input('Enter another number: ').strip()
-        print(f'{secondNum} is a power of {firstNum}? {isPower(float(firstNum), float(secondNum))}')
+    main()

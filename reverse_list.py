@@ -1,6 +1,15 @@
 #!/usr/bin/python3
 
 
+def main():
+    while True:
+        userInput = input('Enter a list separated by spaces: ').strip()
+        try:
+            print(reverseDeep(userInput.split()))
+        except:
+            continue
+
+
 def reverseShallow(list1):
     if len(list1) == 1:
         return list1
@@ -19,9 +28,4 @@ def reverseDeep(list1):
 
 
 if __name__ == '__main__':
-    while True:
-        userInput = input('Enter a list separated by spaces: ').strip()
-        try:
-            print(reverseDeep(userInput.split()))
-        except:
-            continue
+    main()

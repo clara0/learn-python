@@ -1,6 +1,19 @@
 #!/usr/bin/python3
 
 
+def main():
+    while True:
+        userInput = input('Enter three side lengths:').strip()
+        sides = userInput.split()
+        if len(sides) != 3:
+            continue
+        try:
+            result = isTriangle(float(sides[0]), float(sides[1]), float(sides[2]))
+            print(result)
+        except:
+            continue
+
+
 def isTriangle(side1, side2, side3):
     if (side1 + side2) < side3:
         triangle = False
@@ -15,13 +28,4 @@ def isTriangle(side1, side2, side3):
 
 
 if __name__ == '__main__':
-    while True:
-        userInput = input('Enter three side lengths:').strip()
-        sides = userInput.split()
-        if len(sides) != 3:
-            continue
-        try:
-            result = isTriangle(float(sides[0]), float(sides[1]), float(sides[2]))
-            print(result)
-        except:
-            continue
+    main()

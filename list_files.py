@@ -1,5 +1,9 @@
 import os
-import shutil
+
+
+def main():
+    fileList = listFiles('/tmp/a', [], recursive=True)
+    print(fileList)
 
 
 def listFiles(directory, currentResult, recursive=False):
@@ -20,5 +24,4 @@ def listFiles(directory, currentResult, recursive=False):
 
 
 if __name__ == '__main__':
-    fileList = listFiles('/tmp/a', [], recursive=True)
-    print(fileList)
+    main()

@@ -1,6 +1,13 @@
 #!/usr/bin/python3
 
 
+def main():
+    while True:
+        userInput = input('Enter a U.S. phone number: ').strip()
+        result = checkPhoneNum(userInput)
+        print(result)
+
+
 def checkPhoneNum(phoneNum):
     valid = '-() '
     numbers = 0
@@ -28,7 +35,4 @@ def checkPhoneNum(phoneNum):
 
 
 if __name__ == '__main__':
-    while True:
-        userInput = input('Enter a U.S. phone number: ').strip()
-        result = checkPhoneNum(userInput)
-        print(result)
+    main()

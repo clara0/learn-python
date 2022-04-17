@@ -5,17 +5,7 @@ import shutil
 import argparse
 
 
-def copyFile(sourceFile, overwriteFile, fileExists, targetFile):
-    if overwriteFile:
-        shutil.copy2(sourceFile, targetFile)
-    else:
-        if not fileExists:
-            shutil.copy2(sourceFile, targetFile)
-        else:
-            raise Exception('The file already exists.')
-
-
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(description='copy file')
     parser.add_argument('source', help='source file')
     parser.add_argument('-o', '--overwrite', type=bool, default=False, required=True, help='overwrite the file')
@@ -52,3 +42,17 @@ if __name__ == "__main__":
         overwrite = False
 
     copyFile(sourcePath, overwrite, exists, destPath)
+
+
+def copyFile(sourceFile, overwriteFile, fileExists, targetFile):
+    if overwriteFile:
+        shutil.copy2(sourceFile, targetFile)
+    else:
+        if not fileExists:
+            shutil.copy2(sourceFile, targetFile)
+        else:
+            raise Exception('The file already exists.')
+
+
+if __name__ == "__main__":
+    main()

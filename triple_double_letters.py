@@ -2,6 +2,17 @@
 from urllib.request import urlopen
 
 
+def main():
+    file = urlopen('http://www.gutenberg.org/files/3201/files/CROSSWD.TXT')
+    resultList = []
+    for line in file:
+        word = (line.decode('utf-8')).strip()
+        result = findTripleDoubles(word)
+        if result:
+            resultList.append(word)
+    print(resultList)
+
+
 def findTripleDoubles(word):
     prevLetter = None
     pairs = 0
@@ -21,11 +32,4 @@ def findTripleDoubles(word):
 
 
 if __name__ == '__main__':
-    file = urlopen('http://www.gutenberg.org/files/3201/files/CROSSWD.TXT')
-    resultList = []
-    for line in file:
-        word = (line.decode('utf-8')).strip()
-        result = findTripleDoubles(word)
-        if result:
-            resultList.append(word)
-    print(resultList)
+    main()

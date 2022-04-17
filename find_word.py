@@ -3,6 +3,24 @@
 import sys
 
 
+def main():
+    try:
+        options = ['-i', '--ignore-case']
+        fhand = open(sys.argv[-1])
+        word = sys.argv[(-1) - 1]
+        if word.startswith('-'):
+            raise Exception(getUsage())
+        elif sys.argv[1] not in options and len(sys.argv) == 4:
+            print(sys.argv[1])
+            raise Exception(getUsage())
+    except:
+        raise Exception(getUsage())
+
+    x = findWord(word, fhand)
+    for line in x:
+        print(line)
+
+
 def findWord(word, file):
     arguments = sys.argv
     lineList = []
@@ -29,18 +47,4 @@ def getUsage():
 
 
 if __name__ == "__main__":
-    try:
-        options = ['-i', '--ignore-case']
-        fhand = open(sys.argv[-1])
-        word = sys.argv[(-1) - 1]
-        if word.startswith('-'):
-            raise Exception(getUsage())
-        elif sys.argv[1] not in options and len(sys.argv) == 4:
-            print(sys.argv[1])
-            raise Exception(getUsage())
-    except:
-        raise Exception(getUsage())
-
-    x = findWord(word, fhand)
-    for line in x:
-        print(line)
+    main()

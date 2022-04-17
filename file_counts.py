@@ -3,6 +3,24 @@
 import sys
 
 
+def main():
+    try:
+        with open(sys.argv[len(sys.argv) - 1]) as file:
+            counts = count(file)
+
+            header = ('Lines', 'Words', 'Chars')
+            template = '{:<10}{:<10}{:<10}'
+
+            x = template.format(*header)
+            print(x)
+
+            row = template.format(*counts)
+            print(row)
+
+    except FileNotFoundError:
+        raise Exception('Enter a valid file name')
+
+
 def count(fHand):
     needLines = False
     needWords = False
@@ -48,18 +66,4 @@ def count(fHand):
 
 
 if __name__ == "__main__":
-    try:
-        with open(sys.argv[len(sys.argv) - 1]) as file:
-            counts = count(file)
-
-            header = ('Lines', 'Words', 'Chars')
-            template = '{:<10}{:<10}{:<10}'
-
-            x = template.format(*header)
-            print(x)
-
-            row = template.format(*counts)
-            print(row)
-
-    except FileNotFoundError:
-        raise Exception('Enter a valid file name')
+    main()

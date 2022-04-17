@@ -1,6 +1,17 @@
 #!/usr/bin/python3
 
 
+def main():
+    while True:
+        num = input('Enter a number: ').strip()
+        if num != '':
+            try:
+                result = LuhnTest(num)
+                print(result)
+            except:
+                continue
+
+
 def listDigits(num1):
     digitList = []
     num1 = abs(num1)
@@ -46,11 +57,4 @@ def LuhnTest(num):
 
 
 if __name__ == '__main__':
-    while True:
-        num = input('Enter a number: ').strip()
-        if num != '':
-            try:
-                result = LuhnTest(num)
-                print(result)
-            except:
-                continue
+    main()

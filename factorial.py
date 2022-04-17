@@ -1,6 +1,15 @@
 #!/usr/bin/python3
 
 
+def main():
+    while True:
+        userInput = input('Please enter a number: ').strip()
+        try:
+            print(findFactorial(int(userInput)))
+        except:
+            continue
+
+
 def findFactorial(num):
     factorial = 1
     for i in range(1, num + 1):
@@ -17,9 +26,4 @@ def findFactorial2(num):
 
 
 if __name__ == '__main__':
-    while True:
-        userInput = input('Please enter a number: ').strip()
-        try:
-            print(findFactorial(int(userInput)))
-        except:
-            continue
+    main()

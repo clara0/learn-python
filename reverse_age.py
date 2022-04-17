@@ -1,6 +1,11 @@
 #!/usr/bin/python3
 
 
+def main():
+    ages = findAge()
+    print(ages)
+
+
 def reverseNum(num):
     num = str(num)
     return int(num[::-1])
@@ -27,5 +32,4 @@ def findAge():
 
 
 if __name__ == '__main__':
-    ages = findAge()
-    print(ages)
+    main()

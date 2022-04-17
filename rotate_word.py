@@ -5,6 +5,18 @@ import string
 alphabet = string.ascii_lowercase
 
 
+def main():
+    while True:
+        string = input('Enter a word: ').strip()
+        if string.isalpha():
+            num = input('Enter a number: ').strip()
+            try:
+                result = rotate(string, int(num))
+                print(result)
+            except:
+                continue
+
+
 def rotateLetter(letter, rotateNum):
     if letter in alphabet:
         newLetterIndex = alphabet.find(letter) + rotateNum
@@ -22,15 +34,4 @@ def rotate(word, rotateNum):
 
 
 if __name__ == '__main__':
-    while True:
-        string = input('Enter a word: ').strip()
-        if string.isalpha():
-            num = input('Enter a number: ').strip()
-            try:
-                result = rotate(string, int(num))
-                print(result)
-            except:
-                continue
-
-
-
+    main()

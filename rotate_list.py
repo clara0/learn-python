@@ -1,6 +1,11 @@
 #!/usr/bin/python3
 
 
+def main():
+    result = rotate([1, 2, 3], 1000)
+    print(result)
+
+
 def rotateElement(element, rotateNum, list1):
     if element in list1:
         newELementIndex = list1.index(element) + rotateNum
@@ -18,5 +23,4 @@ def rotate(list1, rotateNum):
 
 
 if __name__ == '__main__':
-    result = rotate([1, 2, 3], 1000)
-    print(result)
+    main()

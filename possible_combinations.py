@@ -1,5 +1,10 @@
 
 
+def main():
+    combos = findAll(('1', '2', '3'), ('a', 'b', 'c'))
+    print(combos)
+
+
 def findAll(tuple1, tuple2):
     possibleCombos = []
     for char1 in tuple1:
@@ -11,5 +16,4 @@ def findAll(tuple1, tuple2):
 
 
 if __name__ == "__main__":
-    combos = findAll(('1', '2', '3'), ('a', 'b', 'c'))
-    print(combos)
+    main()

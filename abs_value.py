@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
-if __name__ == '__main__':
+
+def main():
     import random
 
     while True:
@@ -14,3 +15,7 @@ if __name__ == '__main__':
                 break
             else:
                 print('Try again!')
+
+
+if __name__ == '__main__':
+    main()

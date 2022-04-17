@@ -1,6 +1,14 @@
 #!/usr/bin/python3
 
 
+def main():
+    while True:
+        userInput = input('Enter an equation: ').strip()
+        if userInput != '':
+            result = matchBrackets(userInput)
+            print(f'Are the brackets valid? {result}')
+
+
 def matchBrackets(equation):
     firstBrackets = '{[(<'
     lastBrackets = '}])>'
@@ -21,8 +29,4 @@ def matchBrackets(equation):
 
 
 if __name__ == '__main__':
-    while True:
-        userInput = input('Enter an equation: ').strip()
-        if userInput != '':
-            result = matchBrackets(userInput)
-            print(f'Are the brackets valid? {result}')
+    main()

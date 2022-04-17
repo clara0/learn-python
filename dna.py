@@ -1,6 +1,16 @@
 #!/usr/bin/python3
 
 
+def main():
+    while True:
+        userInput = input('Enter some DNA letters: ').strip().upper()
+        try:
+            if userInput != '':
+                print(matchLetters(userInput))
+        except:
+            continue
+
+
 def matchLetters(letters):
     pairList = []
     for letter in letters:
@@ -19,10 +29,4 @@ def matchLetters(letters):
 
 
 if __name__ == '__main__':
-    while True:
-        userInput = input('Enter some DNA letters: ').strip().upper()
-        try:
-            if userInput != '':
-                print(matchLetters(userInput))
-        except:
-            continue
+    main()

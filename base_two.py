@@ -1,6 +1,15 @@
 #!/usr/bin/python3
 
 
+def main():
+    while True:
+        userInput = input('Enter a number: ').strip()
+        try:
+            print(convertBase(int(userInput)))
+        except:
+            continue
+
+
 def convertBase(num):
     if num == 0:
         return 0
@@ -12,9 +21,4 @@ def convertBase(num):
 
 
 if __name__ == '__main__':
-    while True:
-        userInput = input('Enter a number: ').strip()
-        try:
-            print(convertBase(int(userInput)))
-        except:
-            continue
+    main()

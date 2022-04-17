@@ -3,20 +3,7 @@
 from urllib.request import urlopen
 
 
-def isValidWordPair(word1, word2):
-    differentLetters = 0
-    for letterIndex, letter1 in enumerate(word1):
-        if letter1 != word2[letterIndex]:
-            differentLetters += 1
-        if differentLetters >= 3:
-            return False
-
-        if differentLetters == 2:
-            return True
-    return False
-
-
-if __name__ == '__main__':
+def main():
     wordPairList = []
     file = urlopen('http://www.gutenberg.org/files/3201/files/CROSSWD.TXT')
     wordList = sorted([line.decode('utf-8').strip() for line in file], key=len)
@@ -34,3 +21,20 @@ if __name__ == '__main__':
 
     for a, b in wordPairList:
         print(a, b)
+
+
+def isValidWordPair(word1, word2):
+    differentLetters = 0
+    for letterIndex, letter1 in enumerate(word1):
+        if letter1 != word2[letterIndex]:
+            differentLetters += 1
+        if differentLetters >= 3:
+            return False
+
+        if differentLetters == 2:
+            return True
+    return False
+
+
+if __name__ == '__main__':
+    main()

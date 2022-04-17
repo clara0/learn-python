@@ -1,6 +1,21 @@
 # count letters in a file
 
 
+def main():
+    with open('/usr/local/Cellar/wget/1.20.3_2/.brew/wget.rb') as fileHandle:
+        letterFrequency = countLetters(fileHandle)
+
+    header = ('Letter', 'Frequency')
+    template = '{:<10}{:<10}'
+
+    letter = template.format(*header)
+    print(letter)
+
+    for letter in letterFrequency:
+        frequency = template.format(*letter)
+        print(frequency)
+
+
 def countLetters(file):
     letters = dict()
 
@@ -15,15 +30,4 @@ def countLetters(file):
 
 
 if __name__ == "__main__":
-    with open('/usr/local/Cellar/wget/1.20.3_2/.brew/wget.rb') as fileHandle:
-        letterFrequency = countLetters(fileHandle)
-
-    header = ('Letter', 'Frequency')
-    template = '{:<10}{:<10}'
-
-    letter = template.format(*header)
-    print(letter)
-
-    for letter in letterFrequency:
-        frequency = template.format(*letter)
-        print(frequency)
+    main()

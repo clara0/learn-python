@@ -4,6 +4,14 @@ import string
 alphabet = string.ascii_lowercase
 
 
+def main():
+    while True:
+        userInput = input('Enter some letters: ').strip()
+        if userInput.isalpha():
+            result = findMissingLetters(userInput)
+            print(result)
+
+
 def findMissingLetters(letterRange):
     missingLetters = []
     letterRange = letterRange.lower()
@@ -19,8 +27,4 @@ def findMissingLetters(letterRange):
 
 
 if __name__ == '__main__':
-    while True:
-        userInput = input('Enter some letters: ').strip()
-        if userInput.isalpha():
-            result = findMissingLetters(userInput)
-            print(result)
+    main()
